@@ -1,0 +1,63 @@
+/* style.css - central stylesheet for GameHub
+   Sections:
+   1) Reset & base
+   2) Layout (header, main, sidebars)
+   3) Components (cards, forms, buttons)
+   4) Media (images / videos)
+   5) Interactive states (dropdowns, toggles)
+   6) Theme overrides (light-mode)
+*/
+
+/* 1) Reset & base ------------------------------------------------------- */
+html, body { height: 100%; }
+body { margin:0; font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+
+/* 2) Layout ------------------------------------------------------------- */
+header { box-sizing: border-box; }
+main { box-sizing: border-box; }
+/* Make main fill remaining vertical space and enable column layout */
+body.flex { display:flex; flex-direction:column; min-height:100vh; }
+
+/* Sidebars */
+aside { box-sizing: border-box; }
+
+/* 3) Components --------------------------------------------------------- */
+.rounded-xl { border-radius: 12px; }
+.shadow { box-shadow: 0 6px 18px rgba(2,6,23,0.6); }
+.bg-gray-800 { background-color:#1f2937; }
+.bg-gray-700 { background-color:#374151; }
+.bg-gray-900 { background-color:#0b1220; }
+.text-gray-100 { color:#f3f4f6; }
+.text-gray-200 { color:#e5e7eb; }
+.text-gray-300 { color:#d1d5db; }
+.text-gray-400 { color:#9ca3af; }
+.text-gray-500 { color:#6b7280; }
+.text-green-400 { color:#16a34a; }
+
+/* Buttons and inputs */
+button, input[type="button"], input[type="submit"], .theme-toggle { cursor:pointer; }
+input, textarea, select { outline: none; }
+
+/* 4) Media -------------------------------------------------------------- */
+img, video { display:block; max-width:100%; height:auto; }
+.object-cover { object-fit:cover; }
+
+/* 5) Interactive states ------------------------------------------------- */
+.hidden { display:none !important; }
+.theme-switch { display:inline-flex; align-items:center; gap:0.5rem; }
+.theme-toggle { width:42px; height:24px; background:#4b5563; border-radius:9999px; position:relative; transition: background .2s; }
+.theme-toggle::after { content:''; width:18px; height:18px; background:#fff; border-radius:9999px; position:absolute; top:3px; left:3px; transition: transform .2s; }
+.theme-toggle.on { background:#16a34a; }
+.theme-toggle.on::after { transform: translateX(18px); }
+
+/* 6) Theme overrides (light-mode) -------------------------------------- */
+/* When <body> has .light-mode we adjust colors used by Tailwind classes */
+body.light-mode { background-color: #f8fafc !important; color: #111827 !important; }
+body.light-mode header, body.light-mode .bg-gray-800 { background-color: #ffffff !important; }
+body.light-mode .bg-gray-700 { background-color: #f3f4f6 !important; }
+body.light-mode .bg-gray-900 { background-color: #f8fafc !important; }
+body.light-mode .text-gray-100, body.light-mode .text-gray-200, body.light-mode .text-gray-300, body.light-mode .text-gray-400, body.light-mode .text-gray-500 { color: #374151 !important; }
+body.light-mode .text-green-400 { color: #16a34a !important; }
+body.light-mode input, body.light-mode textarea, body.light-mode select { background-color: #fff !important; color: #111827 !important; border: 1px solid #e5e7eb !important; }
+body.light-mode .shadow { box-shadow: 0 1px 2px rgba(0,0,0,0.05) !important; }
+body.light-mode .rounded-xl { background-clip: padding-box; }
